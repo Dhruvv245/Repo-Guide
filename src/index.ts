@@ -2,7 +2,8 @@
 
 import { Command } from 'commander';
 
-import { cloneRepo } from './cloneRepo';
+import { cloneRepo } from './repoInitialization/cloneRepo';
+import { createReadme } from './readme/createReadme';
 
 const program: Command = new Command();
 
@@ -18,10 +19,12 @@ program
 program
   .command('generate')
   .description('Generate the repo guide')
-  .argument('<repo-url>', 'GitHub repositry URL')
+  .argument('<repo-url>', 'GitHub repository URL')
   .argument('<out-dir>', 'Output directory')
   .action(async (repoURL: string, outDir: string) => {
     const repoPath = await cloneRepo(repoURL, outDir);
+    console.log('Generating Repository Guide...');
+    const guidePath = await createReadme(repoPath);
   });
 
 program.parse(process.argv);
