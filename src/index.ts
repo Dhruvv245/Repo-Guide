@@ -3,7 +3,8 @@
 import { Command } from 'commander';
 
 import { cloneRepo } from './repoInitialization/cloneRepo';
-import { createReadme } from './readme/createReadme';
+import { createReadme } from './generateGuide/readme/createReadme';
+import { getGuide } from './generateGuide/getGuide';
 
 const program: Command = new Command();
 
@@ -23,8 +24,9 @@ program
   .argument('<out-dir>', 'Output directory')
   .action(async (repoURL: string, outDir: string) => {
     const repoPath = await cloneRepo(repoURL, outDir);
-    console.log('Generating Repository Guide...');
-    const guidePath = await createReadme(repoPath);
+    console.log('Generating repository guide...');
+    const guidePath = await getGuide(repoPath);
+    console.log(`Guide generated at ${guidePath}`);
   });
 
 program.parse(process.argv);

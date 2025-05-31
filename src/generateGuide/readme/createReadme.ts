@@ -1,7 +1,6 @@
 import * as fs from 'fs/promises';
 import * as path from 'path';
 
-import { generateTree } from './generateProjetTree';
 import { readmeContent } from './readmeContentGenerator';
 
 export const createReadme = async (repoPath: string): Promise<string> => {
@@ -15,13 +14,10 @@ export const createReadme = async (repoPath: string): Promise<string> => {
     } catch {
       await fs.mkdir(guidePath, { recursive: true });
     }
-    const projectTree = await generateTree(repoPath);
-    const content = readmeContent(pkg, projectTree);
+    const content = readmeContent(pkg);
     await fs.writeFile(path.join(guidePath, 'README.md'), content, 'utf-8');
-    console.log(`Guide generated at: ${guidePath}`);
     return guidePath;
   } catch (err: any) {
-    console.log(`Couldn't create the readme file`, err.message);
-    process.exit(1);
+    throw new Error('Could not create readme.md');
   }
 };

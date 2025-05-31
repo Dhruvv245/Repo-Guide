@@ -6,7 +6,7 @@ const formatDeps = (deps: Record<string, string> | undefined): string =>
         .join('\n')
     : 'None';
 
-export const readmeContent = (pkg: any, projectTree: string) => `# ${pkg.name || 'Project Name'}
+export const readmeContent = (pkg: any) => `# ${pkg.name || 'Project Name'}
 
 ## 📦 Description
 ${pkg.description || 'No description provided.'}
@@ -94,12 +94,4 @@ ${
         .join('\n')}\n`
     : ''
 }
-
----
-
-## 📂 Project Structure
-
-\`\`\`
-${projectTree}
-\`\`\`
 `;
