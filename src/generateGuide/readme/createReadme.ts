@@ -16,6 +16,7 @@ export const createReadme = async (repoPath: string): Promise<string> => {
     }
     const content = readmeContent(pkg);
     await fs.writeFile(path.join(guidePath, 'README.md'), content, 'utf-8');
+    console.log('readme.md created');
     return guidePath;
   } catch (err: any) {
     throw new Error('Could not create readme.md');
