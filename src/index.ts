@@ -3,7 +3,6 @@
 import { Command } from 'commander';
 
 import { cloneRepo } from './repoInitialization/cloneRepo';
-import { createReadme } from './generateGuide/readme/createReadme';
 import { getGuide } from './generateGuide/getGuide';
 
 const program: Command = new Command();

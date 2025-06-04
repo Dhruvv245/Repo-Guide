@@ -1,4 +1,5 @@
 import { createCodeSummary } from './code-summary/createCodeSummary.ts';
+import { getArchitecture } from './generateArchitecture/architecture.js';
 import { createReadme } from './readme/createReadme';
 import { createStructure } from './structure/createStructure';
 import { generateTree } from './utils/generateRepoTree.js';
@@ -11,6 +12,7 @@ export const getGuide = async (repoPath: string): Promise<string> => {
     const guidePath = await createReadme(repoPath);
     await createStructure(repoPath, guidePath,projectTree);
     await createCodeSummary(guidePath, files);
+    await getArchitecture(repoPath, guidePath);
     return guidePath;
   } catch (err: any) {
     console.log('An error occurred', err.message);
