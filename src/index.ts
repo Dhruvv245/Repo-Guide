@@ -23,7 +23,6 @@ program
   .argument('<out-dir>', 'Output directory')
   .action(async (repoURL: string, outDir: string) => {
     const repoPath = await cloneRepo(repoURL, outDir);
-    console.log('Generating repository guide...');
     const guidePath = await getGuide(repoPath);
     console.log(`Guide generated at ${guidePath}`);
   });

@@ -1,7 +1,7 @@
 import * as fs from 'fs/promises';
 import * as path from 'path';
 
-export const createStructure = async (repoPath: string, guidePath: string,tree:string) => {
+export const createStructure = async (guidePath: string,tree:string) => {
   try {
     const structurePath = path.join(guidePath, 'structure.md');
     await fs.mkdir(guidePath, { recursive: true });

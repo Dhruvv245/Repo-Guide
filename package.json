@@ -12,10 +12,12 @@
   "author": "Dhruv Chauhan",
   "license": "ISC",
   "devDependencies": {
+    "@types/babel__parser": "^7.0.0",
     "@types/node": "^22.15.21",
     "typescript": "^5.8.3"
   },
   "dependencies": {
+    "@babel/parser": "^7.27.5",
     "commander": "^14.0.0",
     "simple-git": "^3.27.0",
     "ts-morph": "^26.0.0"
